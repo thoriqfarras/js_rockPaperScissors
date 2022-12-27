@@ -1,15 +1,19 @@
+const ROCK = 'rock';
+const PAPER = 'paper';
+const SCISSORS = 'scissors';
+
 function getComputerChoice() {
     const numChoice = Math.floor(Math.random() * 3) + 1; //random int between 1 and 3.
     let wordChoice;
     switch(numChoice) {
         case 1:
-            wordChoice = 'rock';
+            wordChoice = ROCK;
             break;
         case 2:
-            wordChoice = 'paper';
+            wordChoice = PAPER;
             break;
         case 3:
-            wordChoice = 'scissors';
+            wordChoice = SCISSORS;
             break;
         default:
             break;
@@ -19,30 +23,42 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let outcome;
-    let playerChoice = playerSelection.toLowerCase();
+    let playerChoice = playerSelection;
     let computerChoice = computerSelection;
     if (playerChoice == computerChoice) {
         outcome = 'draw';
-    } else if (playerChoice == "rock") {
-        if (computerChoice == 'paper') {
+    } else if (playerChoice == ROCK) {
+        if (computerChoice == PAPER) {
             outcome = 'lose';
-        } else if (computerChoice == 'scissors') {
+        } else if (computerChoice == SCISSORS) {
             outcome = 'win';
         }
-    } else if (playerChoice == "paper") {
-        if (computerChoice == "rock") {
+    } else if (playerChoice == PAPER) {
+        if (computerChoice == ROCK) {
             outcome = 'win';
-        } else if (computerChoice == 'scissors') {
+        } else if (computerChoice == SCISSORS) {
             outcome = 'lose';
         }
-    } else if (playerChoice == "scissors") {
-        if (computerChoice == "rock") {
+    } else if (playerChoice == SCISSORS) {
+        if (computerChoice == ROCK) {
             outcome = 'lose';
-        } else if (computerChoice == 'paper') {
+        } else if (computerChoice == PAPER) {
             outcome = 'win';
         }
     }
     return outcome;
+}
+
+function getUserInput(promptMessage) {
+    let input;
+    while (true) {
+        input = prompt(promptMessage).toLowerCase();
+        if (input == ROCK || input == PAPER || input == SCISSORS) {
+            return input;
+        } else {
+            alert("Invalid input. Please try again.")
+        }
+    }
 }
 
 function game() {
@@ -54,7 +70,7 @@ function game() {
     let numOfDraw = 0
     
     for (let i = 0; i < 5; i++) {
-        playerSelection = prompt("Enter your pick: ").toLowerCase();
+        playerSelection = getUserInput("Enter your pick:");
         computerSelection = getComputerChoice();
         roundOutcome = playRound(playerSelection, computerSelection);
         
