@@ -50,6 +50,7 @@ function game() {
     let computerSelection;
     let playerScore = 0;
     let computerScore = 0;
+    let numOfDraw = 0
     
     for (let i = 0; i < 5; i++) {
         playerSelection = prompt("Enter your pick: ").toLowerCase();
@@ -61,14 +62,18 @@ function game() {
             playerScore++;
         } else if (roundOutcome == 'draw') {
             console.log(`Draw! ${playerSelection} equals ${computerSelection}!`);
+            numOfDraw++;
         } else if (roundOutcome == 'lose') {
             console.log(`Computer wins! ${playerSelection} falls short of ${computerSelection}!`);
             computerScore++;
         }
         setTimeout(3000);
     }
-    console.log('Game ended. Final score:\n' + 
+    console.log('Game ended. Final score after 5 round:\n' + 
                 `Player  : ${playerScore}\n` +
-                `Computer: ${computerScore}`);
+                `Computer: ${computerScore}\n` +
+                `Draw    : ${numOfDraw}`);
     console.log('Thank you for playing!');
 }
+
+game();
