@@ -44,3 +44,31 @@ function playRound(playerSelection, computerSelection) {
     }
     return outcome;
 }
+
+function game() {
+    let playerSelection;
+    let computerSelection;
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    for (let i = 0; i < 5; i++) {
+        playerSelection = prompt("Enter your pick: ").toLowerCase();
+        computerSelection = getComputerChoice();
+        roundOutcome = playRound(playerSelection, computerSelection);
+        
+        if (roundOutcome == 'win') {
+            console.log(`Player wins! ${playerSelection} beats ${computerSelection}!`);
+            playerScore++;
+        } else if (roundOutcome == 'draw') {
+            console.log(`Draw! ${playerSelection} equals ${computerSelection}!`);
+        } else if (roundOutcome == 'lose') {
+            console.log(`Computer wins! ${playerSelection} falls short of ${computerSelection}!`);
+            computerScore++;
+        }
+        setTimeout(3000);
+    }
+    console.log('Game ended. Final score:\n' + 
+                `Player  : ${playerScore}\n` +
+                `Computer: ${computerScore}`);
+    console.log('Thank you for playing!');
+}
