@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    const numChoice = Math.floor(Math.random() * 3) + 1;
+    const numChoice = Math.floor(Math.random() * 3) + 1; //random int between 1 and 3.
     let wordChoice;
     switch(numChoice) {
         case 1:
@@ -48,6 +48,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerSelection;
     let computerSelection;
+    let roundOutcome;
     let playerScore = 0;
     let computerScore = 0;
     let numOfDraw = 0
