@@ -30,3 +30,22 @@ img {
     align-items: center;
     justify-content: center;
 }
+
+#arena {
+    display: flex;
+}
+
+#arena p {
+    display: flex;
+    align-items: center;
+}
+
+/* @keyframes slidein {
+    from {
+        margin-right: 0px;
+    }
+
+    to {
+        margin-right: 250px;
+    }
+} */
