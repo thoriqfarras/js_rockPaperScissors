@@ -93,6 +93,9 @@ function game() {
     console.log('Thank you for playing!');
 }
 
+let playerChoice;
+let computerChoice = getComputerChoice();
+
 const main = document.querySelector('#main');
 const buttons = document.querySelectorAll('button');
 const image = document.querySelector('img');
@@ -100,5 +103,12 @@ const image = document.querySelector('img');
 buttons.forEach(button => {
     button.addEventListener('mouseover', () => {
         image.src = `assets/${button.id}.png`
+    });
+
+    button.addEventListener('click', () => {
+        if (button.id === ROCK) playerChoice = ROCK;
+        else if (button.id === PAPER) playerChoice = PAPER;
+        else if (button.id === SCISSORS) playerChoice = SCISSORS;
+        console.log(playerChoice);
     });
 });
