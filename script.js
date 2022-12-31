@@ -120,6 +120,7 @@ buttons.forEach(button => {
         else if (computerChoice === SCISSORS) comImage.src = `assets/${SCISSORS}.png`;
 
         let roundOutcome = playRound(playerChoice, computerChoice);
+        playerChoice = playerChoice.slice(0, 1).toUpperCase() + playerChoice.slice(1, playerChoice.length);
 
         main.removeChild(choices);
 
