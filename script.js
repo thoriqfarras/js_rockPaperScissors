@@ -49,51 +49,6 @@ function playRound(playerSelection, computerSelection) {
     return outcome;
 }
 
-function getUserInput(promptMessage) {
-    let input;
-    while (true) {
-        input = prompt(promptMessage).toLowerCase();
-        if (input == ROCK || input == PAPER || input == SCISSORS) {
-            return input;
-        } else {
-            alert("Invalid input. Please try again.")
-        }
-    }
-}
-
-function game() {
-    let playerSelection;
-    let computerSelection;
-    let roundOutcome;
-    let playerScore = 0;
-    let computerScore = 0;
-    let numOfDraw = 0
-    
-    for (let i = 0; i < 5; i++) {
-        playerSelection = getUserInput("Enter your pick:");
-        computerSelection = getComputerChoice();
-        roundOutcome = playRound(playerSelection, computerSelection);
-        
-        if (roundOutcome == 'win') {
-            console.log(`Player wins! ${playerSelection} beats ${computerSelection}!`);
-            playerScore++;
-        } else if (roundOutcome == 'draw') {
-            console.log(`Draw! ${playerSelection} equals ${computerSelection}!`);
-            numOfDraw++;
-        } else if (roundOutcome == 'lose') {
-            console.log(`Computer wins! ${playerSelection} falls short of ${computerSelection}!`);
-            computerScore++;
-        }
-        setTimeout(3000);
-    }
-    console.log('Game ended. Final score after 5 round:\n' + 
-                `Player  : ${playerScore}\n` +
-                `Computer: ${computerScore}\n` +
-                `Draw    : ${numOfDraw}`);
-    console.log('Thank you for playing!');
-}
-
-
 const main = document.querySelector('#main');
 const buttons = document.querySelectorAll('button');
 const playerImage = document.querySelector('#player-image');
