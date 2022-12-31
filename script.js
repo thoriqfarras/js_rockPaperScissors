@@ -93,22 +93,48 @@ function game() {
     console.log('Thank you for playing!');
 }
 
-let playerChoice;
-let computerChoice = getComputerChoice();
 
 const main = document.querySelector('#main');
 const buttons = document.querySelectorAll('button');
-const image = document.querySelector('img');
+const playerImage = document.querySelector('#player-image');
+const comImage = document.querySelector('#com-image');
+const choices = document.querySelector('#choices');
+
 
 buttons.forEach(button => {
     button.addEventListener('mouseover', () => {
-        image.src = `assets/${button.id}.png`
+        playerImage.src = `assets/${button.id}.png`
     });
 
     button.addEventListener('click', () => {
+
+        let playerChoice;
+        let computerChoice = getComputerChoice();
+
         if (button.id === ROCK) playerChoice = ROCK;
         else if (button.id === PAPER) playerChoice = PAPER;
         else if (button.id === SCISSORS) playerChoice = SCISSORS;
-        console.log(playerChoice);
+
+        if (computerChoice === ROCK) comImage.src = `assets/${ROCK}.png`;
+        else if (computerChoice === PAPER) comImage.src = `assets/${PAPER}.png`;
+        else if (computerChoice === SCISSORS) comImage.src = `assets/${SCISSORS}.png`;
+
+        let roundOutcome = playRound(playerChoice, computerChoice);
+
+        main.removeChild(choices);
+
+        const outcomeMsg = document.createElement('div');
+        outcomeMsg.classList.add('outcome-msg')
+        
+        if (roundOutcome == 'win') {
+            outcomeMsg.textContent = `Player wins! ${playerChoice} beats ${computerChoice}!`
+        } else if (roundOutcome == 'draw') {
+            outcomeMsg.textContent = `Draw! ${playerChoice} equals ${computerChoice}!`
+        } else if (roundOutcome == 'lose') {
+            outcomeMsg.textContent = `You lost! ${playerChoice} falls short of ${computerChoice}!`
+        }
+
+        main.appendChild(outcomeMsg);
+        
     });
 });
