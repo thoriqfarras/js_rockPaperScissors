@@ -92,5 +92,3 @@ function game() {
                 `Draw    : ${numOfDraw}`);
     console.log('Thank you for playing!');
 }
-
-game();
