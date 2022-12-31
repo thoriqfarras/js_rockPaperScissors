@@ -92,3 +92,13 @@ function game() {
                 `Draw    : ${numOfDraw}`);
     console.log('Thank you for playing!');
 }
+
+const main = document.querySelector('#main');
+const buttons = document.querySelectorAll('button');
+const image = document.querySelector('img');
+
+buttons.forEach(button => {
+    button.addEventListener('mouseover', () => {
+        image.src = `assets/${button.id}.png`
+    });
+});
